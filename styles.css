@@ -128,61 +128,21 @@ body.open-nav p {
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
+	overflow: hidden;
 	position: relative;
 }
 
-.animate-left {
-	animation: animate-left 1s ease-in-out forwards;
-}
-
-@keyframes animate-left {
-	25% {
-		transform: translate(-120%);
-	}
-
-	100% {
-		transform: translate(0);
-	}
-}
-
-.animate-right {
-	animation: animate-right 1s ease-in-out forwards;
-}
-
-@keyframes animate-right {
-	25% {
-		transform: translate(120%);
-		opacity: 0;
-	}
-
-	100% {
-		transform: translate(0);
-		opacity: 1;
-	}
-}
-
-.heading-1.animate,
-.text-1.animate {
-	animation: animate 0.75s ease-in-out forwards;
-}
-
-@keyframes animate {
-	50% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 1;
-	}
+.section-1 .img-section.reverse {
+	flex-direction: row-reverse;
 }
 
 .hero-img,
 .about-img {
-	width: 100%;
-	transition: 0.75s;
-	-moz-transition: 0.75s;
-	-webkit-transition: 0.5s;
+	min-width: 100% !important;
+	transition: 0.75s ease-in-out;
+	-moz-transition: 0.75s ease-in-out;
+	-webkit-transition: 0.5s ease-in-out;
 }
 
 .slide-arrows {
@@ -193,6 +153,7 @@ body.open-nav p {
 	display: flex;
 	justify-content: space-between;
 	gap: 0;
+	z-index: 20;
 }
 
 .slide-arrows > * {
@@ -214,7 +175,22 @@ body.open-nav p {
 	padding-left: 2.5rem;
 }
 
-.section-1 .text-section,
+.section-1 .text-section {
+	display: flex;
+	width: 100vw;
+	overflow: hidden;
+}
+
+.section-1 .text-section > * {
+	min-width: 100%;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.section-1 .text-container {
+	transition: 0.5s ease-in-out;
+}
+
 .section-2 h2,
 .section-2 p {
 	padding-left: 2rem;
@@ -241,8 +217,7 @@ body.open-nav p {
 	align-items: flex-start;
 	gap: 2rem;
 	letter-spacing: 10px;
-	margin-bottom: 3rem;
-	margin-top: 2rem;
+	margin: 2rem 0 3rem 2rem;
 	font-size: 20px;
 	text-transform: uppercase;
 	cursor: pointer;
@@ -318,7 +293,6 @@ body.open-nav p {
 	}
 
 	@media screen and (max-width: 1024px) {
-		.section-1 .text-section,
 		.section-2 .text-section {
 			text-align: center;
 			padding-left: 10%;
@@ -382,17 +356,36 @@ body.open-nav p {
 		overflow: visible;
 	}
 
-	.slide-arrows {
-		left: 100%;
-		right: auto;
+	.section-1 .text-button {
+		flex-basis: 41%;
+		position: relative;
 	}
 
 	.section-1 .text-section {
+		width: 100%;
+	}
+
+	.section-1 .text-container {
 		display: flex;
 		flex-direction: column;
-		flex-basis: 41%;
 		gap: 1.5rem;
 		padding: 5rem 5rem 3rem 5rem;
+	}
+
+	.slide-arrows:not(.slide-arrows.desktop) {
+		display: none;
+	}
+
+	.slide-arrows.desktop {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		right: auto;
+	}
+
+	.shop-now {
+		position: absolute;
+		left: 5rem;
 	}
 
 	.section-1 .text-section .heading-1 {
